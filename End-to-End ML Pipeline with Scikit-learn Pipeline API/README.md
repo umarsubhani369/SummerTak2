@@ -6,17 +6,13 @@ A machine learning web app built with **Flask** to predict whether a Telco custo
 ---
 
 ## 📂 Foldeer Structure
-📁 End-to-End ML Pipeline with Scikit-learn Pipeline API/
+
+📁End-to-End ML Pipeline with Scikit-learn Pipeline API/
 ├── app.py # Flask application backend
-
 ├── churn_model_pipeline.joblib # Trained ML pipeline
-
 ├── templates/
-
 │ └── index.html # Web form for input (Jinja2)
-
 ├── WA_Fn-UseC_-Telco-Customer-Churn.csv # Original dataset
-
 └── README.md # You're here
 
 
