@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Churn Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            width: 100%;
+        }
+
+        .container {
+            width: 100%;
+            padding: 30px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            width: 100%;
+            max-width: 1000px;
+            background: white;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .column {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 12px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 5px;
+            margin-top: 2px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+        }
+
+        .btn {
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 12px;
+            padding: 7px;
+            background: #007bff;
+            color: white;
+            font-size: 8px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .result {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 12px;
+            padding: 10px;
+            background: #fff;
+            border-left: 5px solid #28a745;
+            border-radius: 3px;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        @media screen and (max-width: 768px) {
+            form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🔮 Telco Customer Churn Predictor</h2>
+        <form method="POST">
+            <div class="column">
+                <label>Gender</label>
+                <select name="gender" required>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+
+                <label>Senior Citizen</label>
+                <select name="senior" required>
+                    <option>No</option>
+                    <option>Yes</option>
+                </select>
+
+                <label>Tenure (months)</label>
+                <input type="number" name="tenure" min="0" max="72" required>
+
+                <label>Internet Service</label>
+                <select name="internet" required>
+                    <option>DSL</option>
+                    <option>Fiber optic</option>
+                    <option>No</option>
+                </select>
+            </div>
+
+            <div class="column">
+                <label>Tech Support</label>
+                <select name="tech_support" required>
+                    <option>Yes</option>
+                    <option>No</option>
+                    <option>No internet service</option>
+                </select>
+
+                <label>Contract Type</label>
+                <select name="contract" required>
+                    <option>Month-to-month</option>
+                    <option>One year</option>
+                    <option>Two year</option>
+                </select>
+
+                <label>Payment Method</label>
+                <select name="payment" required>
+                    <option>Electronic check</option>
+                    <option>Mailed check</option>
+                    <option>Bank transfer (automatic)</option>
+                    <option>Credit card (automatic)</option>
+                </select>
+
+                <label>Monthly Charges</label>
+                <input type="number" step="0.01" name="monthly_charges" min="0" max="200" required>
+            </div>
+
+            <button type="submit" class="btn">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            {{ prediction }}<br>
+            {{ confidence }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
