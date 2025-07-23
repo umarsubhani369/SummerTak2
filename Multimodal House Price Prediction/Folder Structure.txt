@@ -1,0 +1,18 @@
+Multimodal-House-Price-Prediction/
+│
+├── app.py                      # Flask app
+├── model.py                    # Model training script
+├── houses.csv                  # Dataset CSV (optional if inside zip)
+├── requirements.txt            # Dependencies
+│
+├── templates/
+│   └── index.html              # HTML frontend
+│
+├── static/                     # Automatically created when you run the app
+│   └── uploaded/               # Uploaded images saved here at runtime
+│
+├── multimodal_model.keras  # Trained model
+|── scaler.save             # Trained scaler (joblib)
+└── Houses Dataset/             # Folder containing:
+|       └── *.jpg                   # All images used in training
+

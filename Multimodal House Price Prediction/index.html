@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>House Price Predictor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .form-wrapper {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 1300px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px);
+      padding: 40px 60px;
+      border-radius: 20px;
+      color: #fff;
+      animation: fadeIn 1s ease;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px 40px;
+    }
+
+    label {
+      font-size: 16px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input[type="number"],
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 15px;
+      border-radius: 6px;
+      border: none;
+    }
+
+    input[type="submit"] {
+      grid-column: span 2;
+      padding: 14px;
+      font-size: 17px;
+      font-weight: bold;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      opacity: 0.9;
+    }
+
+    .loader {
+      display: none;
+      grid-column: span 2;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .loader div {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin: 4px;
+      border-radius: 50%;
+      background: #00c6ff;
+      animation: bounce 1.4s infinite ease-in-out both;
+    }
+
+    .loader div:nth-child(2) { animation-delay: -0.32s; }
+    .loader div:nth-child(3) { animation-delay: -0.16s; }
+
+    @keyframes bounce {
+      0%, 80%, 100% { transform: scale(0); }
+      40% { transform: scale(1); }
+    }
+
+    .prediction {
+      grid-column: span 2;
+      background-color: rgba(0, 255, 140, 0.15);
+      padding: 16px;
+      border-left: 5px solid #00ff99;
+      border-radius: 6px;
+      margin-top: 20px;
+      animation: slideIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+
+      input[type="submit"],
+      .loader,
+      .prediction {
+        grid-column: span 1;
+      }
+
+      .form-container {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="form-wrapper">
+    <div class="form-container">
+      <h2>Predict Your Property's Market Value</h2>
+
+      <form method="POST" enctype="multipart/form-data" onsubmit="showLoader()">
+        <div>
+          <label>Bedrooms:</label>
+          <input type="number" name="bed" min="0" required>
+        </div>
+
+        <div>
+          <label>Bathrooms:</label>
+          <input type="number" name="bath" min="0" required>
+        </div>
+
+        <div>
+          <label>Area (sq ft):</label>
+          <input type="number" name="area" min="100" required>
+        </div>
+
+        <div>
+          <label>Zip Code:</label>
+          <input type="number" name="zip" min="10000" max="99999" required>
+        </div>
+
+        <div>
+          <label>Bathroom Image:</label>
+          <input type="file" name="bathroom" accept="image/*" required>
+        </div>
+
+        <div>
+          <label>Bedroom Image:</label>
+          <input type="file" name="bedroom" accept="image/*" required>
+        </div>
+
+        <div>
+          <label>Frontal Image:</label>
+          <input type="file" name="frontal" accept="image/*" required>
+        </div>
+
+        <div>
+          <label>Kitchen Image:</label>
+          <input type="file" name="kitchen" accept="image/*" required>
+        </div>
+
+        <input type="submit" value="Predict">
+
+        <div class="loader" id="loader">
+          <div></div><div></div><div></div>
+          <p style="margin-top:10px;color:#ddd;">Predicting... Please wait</p>
+        </div>
+
+        {% if prediction %}
+        <div class="prediction">
+          <strong>Predicted Price:</strong> {{ prediction | round(0) }} USD
+        </div>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function showLoader() {
+      document.getElementById("loader").style.display = "block";
+    }
+  </script>
+</body>
+</html>
