@@ -17,20 +17,20 @@ Customer features (contract, tech support, etc.)
 ### Output:
 Churn or Not Churn with confidence %
 
+---
 
 ## 2. Multimodal House Price Prediction
 Predicts housing prices using both tabular data (bed, bath, area, zip) and images (bathroom,
 bedroom, frontal, kitchen).
-Model: EfficientNetB0 (images) + Dense layers (tabular) merged
-UI: Flask
-Input: Structured data + 4 images
-Output: Predicted house price
-Quick Start:
-cd "Multimodal House Price Prediction"
-pip install -r requirements.txt
-python model.py # Train the model
-python app.py # Run Flask app
-Open http://127.0.0.1:5000/
+### Model:
+EfficientNetB0 (images) + Dense layers (tabular) merged
+### UI:
+Flask
+### Input:
+Structured data + 4 images
+### Output:
+Predicted house price
+
 ## 3. Support Ticket Auto-Tagger (Streamlit App)
 Tags support tickets using semantic similarity via a sentence transformer (all-MiniLM-L6-v2).
 Model: SentenceTransformer + Cosine Similarity
