@@ -1,0 +1,7 @@
+Support Ticket Auto-Tagger/
+│
+├── app.py                          # Main Streamlit app
+├── support_ticket_tagger.py       # Core logic: tag prediction with sentence-transformers
+├── requirements.txt               # All required Python packages
+├── README.md                      # Project description and usage instructions
+
