@@ -47,12 +47,17 @@ Top-3 most relevant tags
 cd "SummerTak2" </pre>
 ### Choose the project folder you want to run:
 Support Ticket Auto-Tagger/
+
 Multimodal House Price Prediction/
+
 End-to-End ML Pipeline with Scikit-learn Pipeline API/
+
+<pre>
 cd "Your_Selected_Project"
-pip install -r requirements.txt
+pip install -r requirements.txt </pre>
 
 ---
+
 ## To run the app:
 ### For Streamlit apps
 streamlit run app.py
