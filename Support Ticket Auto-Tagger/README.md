@@ -16,8 +16,7 @@ Automatically tags support tickets using a lightweight sentence transformer (`al
 
 ```bash
 git clone https://github.com/umarsubhani369/SummerTak2.git
-cd "SummerTak2/Support Ticket Auto-Tagger"
----
+cd "SummerTak2/Support Ticket Auto-Tagger" ```
 
 ### Install dependencies:
 ```bash
