@@ -4,15 +4,20 @@ deployable with either Flask or Streamlit.
 
 ## 1. Telco Customer Churn Predictor (Flask App)
 Predicts whether a customer will churn based on contract type, services used, and account details.
-Model: Logistic Regression with preprocessing pipeline
-UI: Flask + Jinja2
-Input: Customer features (contract, tech support, etc.)
-Output: Churn or Not Churn with confidence %
-Quick Start:
-cd "End-to-End ML Pipeline with Scikit-learn Pipeline API"
-pip install -r requirements.txt
-python app.py
-Open http://127.0.0.1:5000/
+
+### Model:
+Logistic Regression with preprocessing pipeline
+
+### UI:
+Flask + Jinja2
+
+### Input:
+Customer features (contract, tech support, etc.)
+
+### Output:
+Churn or Not Churn with confidence %
+
+
 ## 2. Multimodal House Price Prediction
 Predicts housing prices using both tabular data (bed, bath, area, zip) and images (bathroom,
 bedroom, frontal, kitchen).
