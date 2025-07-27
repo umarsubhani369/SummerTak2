@@ -28,18 +28,38 @@ Structured data + 4 images
 ### Output:
 Predicted house price
 
+---
+
 ## 3. Support Ticket Auto-Tagger (Streamlit App)
 Tags support tickets using semantic similarity via a sentence transformer (all-MiniLM-L6-v2).
-Model: SentenceTransformer + Cosine Similarity
-UI: Streamlit
-Input: Free-text ticket
-Output: Top-3 most relevant tags
-Quick Start:
-cd "Support Ticket Auto-Tagger"
+### Model:
+SentenceTransformer + Cosine Similarity
+### UI:
+Streamlit
+### Input:
+Free-text ticket
+### Output:
+Top-3 most relevant tags
+
+---
+## Quick Start:
+<pre> git clone https://github.com/umarsubhani369/SummerTak2.git
+cd "SummerTak2" </pre>
+### Choose the project folder you want to run:
+Support Ticket Auto-Tagger/
+Multimodal House Price Prediction/
+End-to-End ML Pipeline with Scikit-learn Pipeline API/
+cd "Your_Selected_Project"
 pip install -r requirements.txt
+
+---
+## To run the app:
+### For Streamlit apps
 streamlit run app.py
-Requirements:
-Each project contains its own requirements.txt file. Install dependencies per folder.
+### For Flask apps
+python app.py
+
+---
 ### Developed By:
 Umer Hayat
 GitHub: @umarsubhani369
