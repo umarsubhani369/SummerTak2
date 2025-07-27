@@ -67,5 +67,7 @@ python app.py
 ---
 ### Developed By:
 Umer Hayat
+
 GitHub: @umarsubhani369
+
 Passionate about applied ML, model deployment, and building real-world AI systems.
