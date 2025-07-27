@@ -7,13 +7,10 @@ Predicts whether a customer will churn based on contract type, services used, an
 
 ### Model:
 Logistic Regression with preprocessing pipeline
-
 ### UI:
 Flask + Jinja2
-
 ### Input:
 Customer features (contract, tech support, etc.)
-
 ### Output:
 Churn or Not Churn with confidence %
 
