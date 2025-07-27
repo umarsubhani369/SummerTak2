@@ -14,17 +14,17 @@ Automatically tags support tickets using a lightweight sentence transformer (`al
 
 1. Clone this repo:
 
-```bash
+<pre> ```bash
 git clone https://github.com/umarsubhani369/SummerTak2.git
-cd "SummerTak2/Support Ticket Auto-Tagger" ```
+cd "SummerTak2/Support Ticket Auto-Tagger" ``` </pre>
 
 ### Install dependencies:
-```bash
-pip install -r requirements.txt
+<pre> ```bash
+pip install -r requirements.txt  ``` </pre>
 
 ### Run the app:
-```bash
-streamlit run app.py
+<pre>```bash
+streamlit run app.py  ``` </pre>
 
 ### Example Tags
 login issue
